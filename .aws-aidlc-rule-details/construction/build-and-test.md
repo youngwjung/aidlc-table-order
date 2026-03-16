@@ -9,30 +9,10 @@
 
 ---
 
-## Step 0: Detect TDD Artifacts (MANDATORY)
-
-**Check for TDD artifacts** in `aidlc-docs/construction/plans/`:
-- Look for `{unit-name}-test-plan.md` files
-- Look for `{unit-name}-contracts.md` files
-
-**If TDD artifacts found**:
-- TDD was used for code generation
-- Unit tests already executed and passed (🟢 status in test-plan.md)
-- Load test results from `{unit-name}-test-plan.md`
-- Skip re-running unit tests that are already 🟢 Passed
-- Focus on integration tests and other test types
-
-**If NO TDD artifacts found**:
-- Standard code generation was used
-- Proceed with full test execution
-
----
-
 ## Step 1: Analyze Testing Requirements
 
 Analyze the project to determine appropriate testing strategy:
 - **Unit tests**: Already generated per unit during code generation
-  - **If TDD**: Already executed and passed - verify only
 - **Integration tests**: Test interactions between units/services
 - **Performance tests**: Load, stress, and scalability testing
 - **End-to-end tests**: Complete user workflows
@@ -101,14 +81,6 @@ Create `aidlc-docs/construction/build-and-test/unit-test-instructions.md`:
 
 ## Run Unit Tests
 
-**If TDD was used** (test-plan.md exists):
-- Unit tests already executed during Code Generation
-- All tests should be 🟢 Passed in `{unit-name}-test-plan.md`
-- Run verification only to confirm tests still pass after any final changes
-
-**If Standard code generation was used**:
-- Execute full unit test suite
-
 ### 1. Execute All Unit Tests
 \`\`\`bash
 [Command to run all unit tests]
@@ -119,7 +91,6 @@ Create `aidlc-docs/construction/build-and-test/unit-test-instructions.md`:
 - **Expected**: [X] tests pass, 0 failures
 - **Test Coverage**: [Expected coverage percentage]
 - **Test Report Location**: [Path to test reports]
-- **If TDD**: Cross-reference with `{unit-name}-test-plan.md` for requirements coverage
 
 ### 3. Fix Failing Tests
 If tests fail:
